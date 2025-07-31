@@ -48,7 +48,7 @@ For your second milestone, explain what you've worked on since your previous mil
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 I chose the Thermal Camera project. There are two notable components in terms of size and appearance. The first is the Adafruit MLX90640 infrared camera sensor---this is the module that makes thermal imaging possible. Its purpose is to detect temperature variations across an image. The second is the Raspberry Pi 4. It is a small yet powerful computer that is able to create an interface with the MLX90640 sensor. Its connectivity options along with SSH server support will allow me to display the camera image on my monitor using my laptop.
-Possibly a third component is the SD card which contains the entire Raspberry Pi 4 OS (Operating System). This acts as the Pi's storage device and is responsible for holding all of the library systems and project files that I will be using throughout the next few weeks.
+Possibly a third component is the SD card which contains the entire Raspberry Pi OS (Operating System). This acts as the Pi's storage device and is responsible for holding all of the library systems and project files that I will be using throughout the next few weeks.
 
 
 For your first milestone, describe what your project is and how you plan to build it. You can include:
