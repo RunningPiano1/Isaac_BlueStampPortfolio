@@ -54,12 +54,6 @@ The main challenge I faced is getting all of the modules, packages, and librarie
 
 Next up, my first priority is to get the circuitry working. Doing this will finally allow me to display the thermal image on my monitor. While that is being done, I also need investigate the "Electronics Fun Kit". There are still many different parts inside I have never seen in my life, such as the breadboard, jumper wires, resistors, LEDs, and more. Learning about the functions and compatibilities of these numerous pieces will make the wiring and circuitry much more intuitive to me. I have already come up with one modification I would like to add---I intend to develop a temperature readout mode so that the temperature can be displayed next to the cursor relative to its location on the thermal image.
 
-For your first milestone, describe what your project is and how you plan to build it. You can include:
-- An explanation about the different components of your project and how they will all integrate together
-- Technical progress you've made so far
-- Challenges you're facing and solving in your future milestones
-- What your plan is to complete your project
-
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
