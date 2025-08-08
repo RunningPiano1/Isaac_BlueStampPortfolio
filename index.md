@@ -90,5 +90,3 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 2](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
 - [Example 3](https://some-natalie.dev/blog/ssh-x11-forwarding/)
 - [Ideas for Thermal Camera Modifications](https://techimaging.com/applications/infrared-thermal-imaging-applications)
-
-To watch the BSE tutorial on how to create a portfolio, click here.
