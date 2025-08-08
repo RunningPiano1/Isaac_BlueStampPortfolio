@@ -86,7 +86,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://learn.adafruit.com/adafruit-mlx90640-ir-thermal-camera)
-- [Example 2](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
-- [Example 3](https://some-natalie.dev/blog/ssh-x11-forwarding/)
+- [Main Tutorial](https://learn.adafruit.com/adafruit-mlx90640-ir-thermal-camera)
+- [CircuitPython & Blinka](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
+- [X11 Forwarding to Monitor Display](https://some-natalie.dev/blog/ssh-x11-forwarding/)
 - [Ideas for Thermal Camera Modifications](https://techimaging.com/applications/infrared-thermal-imaging-applications)
