@@ -81,7 +81,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | Adafruit MLX90640 Thermal Camera Lens| Utilizes I2C to detect and interpret temperature variations across a scene and creates a 24x32 pixels thermal image from that temperature data| $74.95 | <a href="https://www.adafruit.com/product/4407?srsltid=AfmBOop8JiOR0H0jArvrvqGnvUHS1d8SkR2zLZA57effkyM_DrBYPCIz"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+| Raspberry Pi 4 Model B | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 
 # Other Resources/Examples
