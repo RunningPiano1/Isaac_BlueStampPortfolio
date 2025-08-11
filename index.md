@@ -46,9 +46,9 @@ Red (VIN) ---> Pin 1 (3.3 V)
 
 Black (GND) ---> Pin 6
 
-Blue (SDA) --->	Pin 3 (GPIO 2, SDA)*
+Blue (SDA) --->	Pin 3 (GPIO 2)*
 
-Yellow --->	Pin 5 (GPIO 3, SCL)*
+Yellow (SCL) --->	Pin 5 (GPIO 3)*
 
 *these two pins are interchangeable
 
