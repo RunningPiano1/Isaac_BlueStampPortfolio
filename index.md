@@ -37,19 +37,26 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 
-My goal for Milestone 2 was at least getting the bare minimum done---that was, connecting my camera sensor and Raspberry Pi together and getting my live heatmaps displayed on my monitor. After that, I planned to add some elementary modifications that would mainly improve user interface and performance. I successfully integrated the Adafruit MLX90640 with the Raspberry Pi with the help of female jumper wires. There was a specific way the two parts had to be connected for the whole system to work. Using an online diagram as my reference (I will also put it on the bottom of the page), I learned off the 40 different GPIO pins on the Raspberry Pi 4. Pins 1 and 2 (from the top) were the power pins (3.3V and 5V outputs), which would supply the voltage and current needed for the circuit to continue running. Pins 
-Pin There was still a lot of work to do after---I had to enable X11 Forwarding, a feature of the SSH protocol that allowed me use my remote server to display the image on my monitor. I also installed another key python libary like matplotlib, a library capable of creating animated images and viualizations. In my code, 
+My goal for Milestone 2 was at least getting the bare minimum done---that was, connecting my camera sensor and Raspberry Pi together and getting my live heatmaps displayed on my monitor. After that, I planned to add some elementary modifications that would mainly improve user interface and performance.  There was a specific way the MLX90640 and the Pi had to be connected for the whole system to work. Using an online diagram as my reference (I will also put it on the bottom of the page), I learned about the 40 different GPIO pins on the Raspberry Pi 4. Pins 1 and 2 (from the top) were the power pins (3.3V and 5V outputs), which would supply the voltage and current needed for the circuit to continue running. I used the 3.3 V power because the Adafruit MLX90640 normally operates at 3.3 V (using 5 V could permanently dammage the sensor). I then used GPIO 2 (SDA), labeled as Pin 3, and GPIO 3 (SCL) labeled as Pin 5, to enable I2C communication. The last pin I used was the GND or ground pin, labeled Pin 6, which acts as a return to the power supply.
+
+I successfully integrated the Adafruit MLX90640 with the Raspberry Pi with the help of the STEMMA QT/Qwiic cable and female jumper wires. It was important to match the correct wires with the correct pins otherwise the sensor would not activate. 
+It goes:
+
+Red (VIN) ---> Pin 1 (3.3 V)
+Black (GND) ---> Pin 6
+Blue (SDA) --->	Pin 3 (GPIO 2, SDA)*
+Yellow --->	Pin 5 (GPIO 3, SCL)*
+
+*these two pins are interchangeable
+
+I then had to enable X11 Forwarding, a feature of the SSH protocol that allowed me use my remote server to display the image on my monitor. I also installed matplotlib on Python, a library capable of creating animated images and viualizations. In my code, I also used the modules board and busio. The board module essentially creates a bridge between my code on the physical pins on the Raspberry Pi. The busio module is responsible for handling the I2C protocol connections which as what will let me communicate with the MLX90640 camera sensor. So far, most of the live display code is identical to what was provided in the original script. I added a few modifications improve user interface such as numerical temperature readings from the center pixel, an overheat warning, and a button to save any specific frame. 
+
 
 A surprising discovery that I learned one my way to Milestone 2 is how sensitive accurate fire detection was. Although not noticeable at face value, upon further research, it came to my knowledge that small environmental changes within the sensor's scope of detection could trigger false positives and inaccurate data readings. Additionally, when experimenting with one of my modification ideas, I discovered that the Raspberry Pi 4 had its own sound system and was able to produce audio when paired with the correct equipment, that being the Actuve Buzzer (expanded on further later).
 
 Unfortunately, the classic issue of rage-inducing installation and runtime errors in code persisted. X11 Forwarding and display was by far the most frustrating as it was still a new concept to me. Getting all the display settings was incredibly difficult as I would usually run into error messages such as "localhost:0 unavailable" or "cannot open display" in my terminal. Lastly, I spent a good amount of time on my own trying to understand the sample code and writing my own sections to adjust the heatmap to my own liking.
 
 My first priority now is to finalize my sound system with my buzzers arriving this weekend. After that. Then, I hope to get one more "real-life applicable" modifcation such as being able to detect false-positive errors producing "true" temperatures. Lastly, I hope to conduct field testing on different objects and in environmental conditions so that I can ensure that the sensor is both reliable and ready to be presented next Thursday.
-
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
 
 # First Milestone
 
