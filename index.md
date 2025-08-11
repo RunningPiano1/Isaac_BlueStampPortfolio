@@ -43,8 +43,11 @@ I successfully integrated the Adafruit MLX90640 with the Raspberry Pi with the h
 It goes:
 
 Red (VIN) ---> Pin 1 (3.3 V)
+
 Black (GND) ---> Pin 6
+
 Blue (SDA) --->	Pin 3 (GPIO 2, SDA)*
+
 Yellow --->	Pin 5 (GPIO 3, SCL)*
 
 *these two pins are interchangeable
