@@ -108,7 +108,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 |:--:|:--:|:--:|:--:|
 | Adafruit MLX90640 Thermal Camera Lens| Utilizes I2C to detect and interpret temperature variations across a scene and creates a 24x32 pixels thermal image from that temperature data| $74.95 | <a href="https://www.adafruit.com/product/4407?srsltid=AfmBOop8JiOR0H0jArvrvqGnvUHS1d8SkR2zLZA57effkyM_DrBYPCIz"> Link </a> |
 | Raspberry Pi 4 Model B | Runs commands in CircuitPython and communicates with MLX90640 | $Price | <a href="https://www.adafruit.com/product/4292?gad_source=1&gad_campaignid=21079227318&gbraid=0AAAAADx9JvStS3aXDb_mllD3Bp7VbBD-B&gclid=CjwKCAjw7_DEBhAeEiwAWKiCC1RDCE0aJodW1tCvu1LwfwSJxSOQyuyay-Jzku-0jkHMeT36NEHQHRoC644QAvD_BwE"> Link </a> |
-| Breadboard (Half or Full Sized) | Creates circuits, can plug in components such as transistors, LEDs, buzzers, and jumpers | $Price | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.adafruit.com/product/64)"> Link </a> |
+| Breadboard (Half or Full Sized) | Used for creating simple circuits, can plug in components such as transistors, LEDs, buzzers, and jumpers | $Price | <a href="(https://www.adafruit.com/product/64)"> Link </a> |
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
