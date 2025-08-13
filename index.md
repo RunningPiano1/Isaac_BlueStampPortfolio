@@ -81,6 +81,9 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 Raspberry Pi 4 Pinout
 ![image1](Raspberry-Pi-4-Pinout-scaled.webp)
 
+Raspberry Pi with Breadboard + Active Buzzer
+![image2](Screenshot 2025-08-13 124359(1).jpg)
+
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
