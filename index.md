@@ -82,6 +82,7 @@ Raspberry Pi 4 Pinout
 ![image1](Raspberry-Pi-4-Pinout-scaled.webp)
 
 Raspberry Pi with Breadboard + Active Buzzer
+
 ![image2](Screenshot 2025-08-13 124359(1).jpg)
 
 # Code
