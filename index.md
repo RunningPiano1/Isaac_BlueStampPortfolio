@@ -110,3 +110,4 @@ One of the best parts about Github is that you can view how other people set up 
 - [CircuitPython & Blinka](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
 - [X11 Forwarding to Monitor Display](https://some-natalie.dev/blog/ssh-x11-forwarding/)
 - [Ideas for Thermal Camera Modifications](https://techimaging.com/applications/infrared-thermal-imaging-applications)
+- [Example Portfolio for Reference](https://trashytuber.github.io/YimingJiaBlueStamp/)
