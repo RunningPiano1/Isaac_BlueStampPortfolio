@@ -78,7 +78,7 @@ Raspberry Pi with Breadboard + Active Buzzer
 ![image2](raspberrypiwithbreadboard.webp)
 
 Raspberry Pi with Adafruit MLX90640 connections
-![image3](sensor_with_pi.jpg)
+![image3](sensor_with_pi1.jpg)
 
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
