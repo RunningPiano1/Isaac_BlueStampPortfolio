@@ -108,7 +108,6 @@ void loop() {
 | Adafruit Active Buzzer 5V | Emits audible alert when detected temperature exceeds set threshold | $0.95 | <a href="https://www.adafruit.com/product/1536"> Link </a> |
 
 # Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Main Tutorial](https://learn.adafruit.com/adafruit-mlx90640-ir-thermal-camera)
 - [CircuitPython & Blinka](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
 - [X11 Forwarding to Monitor Display](https://some-natalie.dev/blog/ssh-x11-forwarding/)
