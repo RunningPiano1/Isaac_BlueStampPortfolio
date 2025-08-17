@@ -1,5 +1,5 @@
 # Isaac's Project
-For my project, I built a thermal camera system powered by the Raspberry Pi 4 that can create heatmaps, measure distances, and even trigger an alarm when temperatures rise too high. One of the most difficult challenges I was met with was installing and configuring the necessary software and modules but that made my first successful heatmap display even more rewarding. Developing this project strengthened persistence, creativity, and problem-solving skills while transforming my ideas into a functioning tool with real-world potential.
+For my project, I built a thermal camera system powered by the Raspberry Pi 4 that can create heatmaps, measure distances, and even trigger an alarm when temperatures rise too high. One of the most difficult challenges I was met with was installing and configuring the necessary software and modules but that made my first successful heatmap display even more rewarding. Developing this project strengthened my persistence, creativity, and problem-solving skills while transforming my ideas into a functioning tool with real-world potential.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
