@@ -1,7 +1,6 @@
 # Isaac's Project
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
+For my project, I built a thermal camera system powered by the Raspberry Pi 4 that can create heatmaps, measure distances, and even trigger an alarm when temperatures rise too high. One of the most difficult challenges I was met with was installing and configuring the necessary software and modules but that made my first successful heatmap display even more rewarding. Developing this project strengthened persistence, creativity, and problem-solving skills while transforming my ideas into a functioning tool with real-world potential.
 
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
 ```HTML 
 <!--- This is an HTML comment in Markdown -->
 <!--- Anything between these symbols will not render on the published site -->
@@ -77,7 +76,6 @@ Raspberry Pi with Adafruit MLX90640 connections
 ![image3](sensor_with_pi1.jpg)
 
 # Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```java
 import time
