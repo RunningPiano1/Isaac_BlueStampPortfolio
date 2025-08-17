@@ -196,7 +196,6 @@ try:
             mlx.getFrame(frame)
             data_array = np.reshape(frame, (24, 32))
             center_pixel = data_array[12,16] #[12,16] is location of center pixel
-            #center_temp_text.set_text(f"Center: {center_pixel:.1f}°C")
             center_temp_text.set_text(f"Center: {round(center_pixel, 1)}°C")
             im.set_array(data_array)
             im.set_clim(vmin=20, vmax=40)
@@ -210,7 +209,6 @@ try:
             # Overheating Detection Condition
             hottest_pixel = np.max(data_array)
             if hottest_pixel > threshold:
-                # print(f"Warning: Exceeding temperatures detected at {round(hottest_pixel, 1)}°C")
                 alert_text.set_text(f"!!! OVERHEAT WARNING: {round(hottest_pixel, 1)}°C !!!")
                 alert_text.set_visible(True)  
                 center_temp_text.set_visible(False)
@@ -226,7 +224,6 @@ try:
             try: 
                 dis = distance()
                 distance_text.set_text(f"Distance from Object Detected: {round(dis,1)} cm")
-                # print(f"Distance: {round(dis,1)} cm")
             except Exception:
                 distance_text.set_text("Distance from Object Detected: unknown")
         except ValueError:
