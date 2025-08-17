@@ -79,17 +79,164 @@ Raspberry Pi with Adafruit MLX90640 connections
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
-```c++
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
-}
+```java
+import time
+import board
+import busio
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Button
+import adafruit_mlx90640
+import os
+import RPi.GPIO as GPIO
 
-void loop() {
-  // put your main code here, to run repeatedly:
+# I2C setup
+i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
+mlx = adafruit_mlx90640.MLX90640(i2c)
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_2_HZ
+print("MLX90640 sensor initialized")
+# Pre-allocate frame
+frame = [0] * 768   
 
-}
+# Matplotlib setup
+plt.ion()  # Interactive mode on
+fig, ax = plt.subplots()
+fig.canvas.manager.set_window_title("Thermal Camera Display")
+ax.set_title("Thermal Image Display")
+im = ax.imshow(np.zeros((24, 32)), cmap="coolwarm", interpolation="nearest", vmin=20, vmax=40)
+cbar = plt.colorbar(im)
+cbar.set_label("Temperature (°C)", fontsize=16)
+plt.savefig("frame.png")
+
+# Temperature Readout Mode @ Center Pixel
+center_temp_text = ax.text(1,1, '', color='black', fontsize=10, fontweight="bold")
+
+# Take Picture button
+picture_ax = plt.axes([0.35, 0.03, 0.2, 0.075])
+picture_button = Button(picture_ax, 'Save Picture (p)')
+picture_taken_text = ax.text(1,-4, '', color='black', fontsize=10, fontweight="bold")
+
+# Take Picture Command
+image_folder = "Image Folder"
+os.makedirs(image_folder, exist_ok=True)
+def save_image(event=None):
+    timestamp = int(time.time())
+    filename = f"Thermal_Picture_{timestamp}.png"
+    save_path = os.path.join(image_folder, filename)
+    plt.savefig(save_path)
+    print(f"Saved: {filename}")
+    picture_taken_text.set_text(f"Saved: {filename} in Image Folder")
+    picture_taken_text.set_visible(True)
+    plt.draw()
+    plt.pause(2)
+    picture_taken_text.set_visible(False)
+    plt.draw()
+
+
+# Keybind
+def keybind(event):
+    if event.key.lower() == "p":
+        save_image()
+
+picture_button.on_clicked(save_image)
+fig.canvas.mpl_connect("key_press_event", keybind)
+
+picture_ax.set_facecolor("#d7cccc")
+picture_ax.patch.set_linewidth(1.5)
+picture_ax.patch.set_edgecolor("black")
+
+# Buzzer setup
+buzzTime = 0.5
+buzzDelay = 0.1
+GPIO.setmode(GPIO.BCM)
+buzzerPin = 4
+GPIO.setup(buzzerPin, GPIO.OUT)
+
+
+# Overheating Detection Setup
+threshold = 50.0
+alert_text = ax.text(0.5, 0.99, "", color="red", fontsize=15, fontweight="bold", ha="center", va="top", transform=ax.transAxes, visible=False)
+
+
+# Ultrasonic Sensor
+TRIG = 17
+ECHO = 18
+
+
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+
+def distance():
+    GPIO.output(TRIG, False)
+    time.sleep(0.000002)
+
+    GPIO.output(TRIG, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG, False)
+
+    start_time = time.time()
+    stop_time = time.time()
+
+    while GPIO.input(ECHO) == 0:
+        start_time = time.time()
+
+    while GPIO.input(ECHO) == 1:
+        stop_time = time.time()
+
+
+    elapsed = stop_time - start_time
+    return elapsed * 34300 / 2 #cm
+
+# Distance Display on matplotlib
+distance_text = ax.text(0.02, 0.08, "", color="black", fontsize=12, transform=ax.transAxes)
+
+# Imaging Process
+try: 
+    while True:
+        try:
+            mlx.getFrame(frame)
+            data_array = np.reshape(frame, (24, 32))
+            center_pixel = data_array[12,16] #[12,16] is location of center pixel
+            #center_temp_text.set_text(f"Center: {center_pixel:.1f}°C")
+            center_temp_text.set_text(f"Center: {round(center_pixel, 1)}°C")
+            im.set_array(data_array)
+            im.set_clim(vmin=20, vmax=40)
+            #im.set_clim(vmin=np.min(data_array), vmax=np.max(data_array))  # optional: dynamic scaling
+            fig.canvas.draw()
+            fig.canvas.flush_events()
+            plt.pause(0.001)
+
+
+            
+            # Overheating Detection Condition
+            hottest_pixel = np.max(data_array)
+            if hottest_pixel > threshold:
+                # print(f"Warning: Exceeding temperatures detected at {round(hottest_pixel, 1)}°C")
+                alert_text.set_text(f"!!! OVERHEAT WARNING: {round(hottest_pixel, 1)}°C !!!")
+                alert_text.set_visible(True)  
+                center_temp_text.set_visible(False)
+                GPIO.output(buzzerPin, True)
+                time.sleep(buzzTime)
+                GPIO.output(buzzerPin, False)
+                time.sleep(buzzDelay)
+            else:
+                alert_text.set_visible(False) 
+                center_temp_text.set_visible(True)         
+
+            # Read ultrasonic distance
+            try: 
+                dis = distance()
+                distance_text.set_text(f"Distance from Object Detected: {round(dis,1)} cm")
+                # print(f"Distance: {round(dis,1)} cm")
+            except Exception:
+                distance_text.set_text("Distance from Object Detected: unknown")
+        except ValueError:
+            print("Frame read failed. Retrying...")
+            continue
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    print("Program stopped")
 ```
 
 # Bill of Materials
@@ -102,6 +249,7 @@ void loop() {
 | Jumper wires (male-to-female, female-to-female) | Insulated wires; Used to make temporary electrical connections between Raspberry Pi, breadboard, and MLX90640 | $1.95 | <a href="https://www.adafruit.com/product/1953?gad_source=1&gad_campaignid=21079227318&gbraid=0AAAAADx9JvQS36A15I8RDkejEkvAyADkF&gclid=CjwKCAjw7_DEBhAeEiwAWKiCC5cOSXqP1MO3frNGBRI0Q7POVlJQeMK4qn0T6fojh8sR4heU0SAFiRoCchIQAvD_BwE"> Link 1 </a> <a href="https://www.adafruit.com/product/1951?gad_source=1&gad_campaignid=21079227318&gbraid=0AAAAADx9JvQS36A15I8RDkejEkvAyADkF&gclid=CjwKCAjw7_DEBhAeEiwAWKiCCxK-_y5bJMMKqWz3sYLqqYOCvJBhx1c-peFAy7h_oLgJtJv53SDnZxoCxOkQAvD_BwE"> Link 2 </a> |
 | 32 GB SD Card | Stores Raspberry Pi OS, project code, and program files | $7.99 | <a href="https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-ultra-uhs-i-microsd?sku=SDSQUA4-032G-GN6MA&ef_id=CjwKCAjw7_DEBhAeEiwAWKiCC3o5kjTgrRjMTfhmuQDttlQz4MInsH2xkJJP5txUZM58m-YV3feYsRoCwP8QAvD_BwE:G:s&s_kwcid=AL!15012!3!!!!x!!!21840826498!&utm_medium=pdsh2&utm_source=gads&utm_campaign=Google-B2C-Conversion-Pmax-NA-US-EN-Memory_Card-All-All-Brand&utm_content=&utm_term=SDSQUA4-032G-GN6MA&cp2=&gad_source=1&gad_campaignid=21836907008&gbraid=0AAAAA-HVYqlgpL5EbLFO_MwD3QHhjGSpA&gclid=CjwKCAjw7_DEBhAeEiwAWKiCC3o5kjTgrRjMTfhmuQDttlQz4MInsH2xkJJP5txUZM58m-YV3feYsRoCwP8QAvD_BwE"> Link </a> |
 | Adafruit Active Buzzer 5V | Emits audible alert when detected temperature exceeds set threshold | $0.95 | <a href="https://www.adafruit.com/product/1536"> Link </a> |
+| HC-SR04 Ultrasonic Sensor Module (only used one) | Ultrasonic sensor that can calculate distance measurements from nearby objects | $11.99 | <a href="https://us.elegoo.com/products/elegoo-ultrasonic-sensor-kit?srsltid=AfmBOor6T4UTZGvF405NKuaOwTRi-rTVVo1Vv0IYiaBK2YmfyutWx_OA"> Link </a> |
 
 # Other Resources/Examples
 - [Main Tutorial](https://learn.adafruit.com/adafruit-mlx90640-ir-thermal-camera)
